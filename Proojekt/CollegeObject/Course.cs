@@ -8,6 +8,10 @@ namespace projekt
 {
     public class Course : Department
     {
+        /// <summary>
+        /// Một Khóa Học, hay Học Phần
+        /// Trong một Khóa Học sẽ có nhiều Sinh Viên tham dự cùng với đó là 1 giảng viên đứng lớp
+        /// </summary>
         public string CourseCode { get; set; }
         public string CourseName { get; set; }
         public Lecturer Lecturer { get; set; }
@@ -15,19 +19,5 @@ namespace projekt
         public DateTime End { get; set; }
 
         public List<Student> EnrolledStudents = new List<Student>();
-
-        public void AddStudent(Student student)
-        {
-            this.EnrolledStudents.Add(student); 
-        }
-        public void RemoveStudent(Student student)
-        {
-            this.EnrolledStudents.Remove(student);
-        }
-
-        public void AddLecturer(Lecturer lecturer)
-        {
-            this.Lecturer = lecturer;
-        }
     }
 }
