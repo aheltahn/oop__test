@@ -37,8 +37,8 @@
       //LopDepartment
     public class Department : IListStudent
 {
-    public int DepartmentID { get; private set; }
-    public string DepartmentName { get; private set; }
+    public int DepartmentID { get; set; }
+    public string DepartmentName { get; set; }
     private List<Student> ListStudents { get; set; }
     
     public Department(int departmentID, string departmentName)
