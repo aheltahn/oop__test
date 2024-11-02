@@ -1,5 +1,3 @@
-﻿namespace TSXtheoKhoa
-{
     
         // định danh các đối tượng có ID và Name
         public interface INDENTITY
@@ -101,7 +99,7 @@
     {
         return new List<Student>(ListStudents);
     }
-}
+   }
 
-    }
+    
 
