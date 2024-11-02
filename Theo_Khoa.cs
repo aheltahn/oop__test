@@ -23,10 +23,10 @@
         // Lớp Student kế thừa INDENTITY và đại diện cho một sinh viên
         public class Student : INDENTITY
         {
-            public int ID { get; private set; }
-            public string Name { get; private set; }
-            public int DepartmentID { get; private set; }
-            public string DepartmentName { get; private set; }
+            public int ID { get; set; }
+            public string Name { get; set; }
+            public int DepartmentID { get; set; }
+            public string DepartmentName { get; set; }
 
             public Student(int id, string name, int departmentID, string departmentName)
             {
@@ -51,13 +51,13 @@
                 ListStudents = new List<Student>();
             }
 
-            // Thêm sinh viên vào danh sách
+            
             public void AddStudent(Student student)
             {
                 ListStudents.Add(student);
             }
 
-            // Xóa sinh viên khỏi danh sách
+           
             public void RemoveStudent(int studentID)
             {
                 Student student = ListStudents.Find(s => s.ID == studentID);
@@ -72,13 +72,13 @@
                 }
             }
 
-            // Xóa sinh viên và có thể thêm các xử lý bổ sung như log
+          
             public void DeleteStudent(int studentID)
             {
                 RemoveStudent(studentID);
             }
 
-            // Cập nhật thông tin sinh viên
+         
             public void UpdateStudent(Student updatedStudent)
             {
                 Student student = ListStudents.Find(s => s.ID == updatedStudent.ID);
@@ -88,13 +88,13 @@
                 }
             }
 
-            // Tìm sinh viên theo ID
+        
             public Student FindStudent(int studentID)
             {
                 return ListStudents.Find(s => s.ID == studentID);
             }
 
-            // Lấy toàn bộ danh sách sinh viên
+          
             public List<Student> GetAllStudents()
             {
                 return new List<Student>(ListStudents);
