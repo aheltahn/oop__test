@@ -17,13 +17,20 @@ namespace projekt
 
         public override void DisplayInfo()
         {
+            //cá nhân
             Console.WriteLine($"ID: {ID}");
             Console.WriteLine($"Name: {Name}");
-            Console.WriteLine($"Email: {Email}");
-            Console.WriteLine($"Phone: {PhoneNumber}");
+            Console.WriteLine($"Gender: {Gender}");
+            Console.WriteLine($"Bday: {Bday}");
+            Console.WriteLine($"ClassID: {ClassID}");
+            //học tập
             Console.WriteLine($"Major: {Major}");
             Console.WriteLine($"Year: {Year}");
+            Console.WriteLine($"SchoolYear: {SchoolYear}");
             Console.WriteLine($"GPA: {GPA}");
+            //liên lạc
+            Console.WriteLine($"Email: {Email}");
+            Console.WriteLine($"Phone: {PhoneNumber}");
         }
     }
 }
