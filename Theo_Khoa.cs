@@ -19,7 +19,7 @@
         }
 
 
-        // Lớp Student kế thừa INDENTITY và đại diện cho một sinh viên
+        // LopStudent
         public class Student : INDENTITY
         {
             public int ID { get; set; }
@@ -35,69 +35,73 @@
                 DepartmentName = departmentName;
             }
         }
-        public class Department : IListStudent
-        {
-            public string DepartmentID { get; set; }
-            public string DepartmentName { get; set; }
-            public string Lecturer { get; set; }
-            private List<Student> ListStudents { get; set; }
-
-            public Department(string departmentID, string departmentName, string lecturer)
-            {
-                DepartmentID = departmentID;
-                DepartmentName = departmentName;
-                Lecturer = lecturer;
-                ListStudents = new List<Student>();
-            }
-
-            
-            public void AddStudent(Student student)
-            {
-                ListStudents.Add(student);
-            }
-
-           
-            public void RemoveStudent(int studentID)
-            {
-                Student student = ListStudents.Find(s => s.ID == studentID);
-                if (student != null)
-                {
-                    ListStudents.Remove(student);
-                    Console.WriteLine($"Đã xóa sinh viên với ID: {studentID}");
-                }
-                else
-                {
-                    Console.WriteLine($"Không tìm thấy sinh viên với ID: {studentID}");
-                }
-            }
-
-          
-            public void DeleteStudent(int studentID)
-            {
-                RemoveStudent(studentID);
-            }
-
-         
-            public void UpdateStudent(Student updatedStudent)
-            {
-                Student student = ListStudents.Find(s => s.ID == updatedStudent.ID);
-                if (student != null)
-                {
-                    student = updatedStudent;
-                }
-            }
-
         
-            public Student FindStudent(int studentID)
-            {
-                return ListStudents.Find(s => s.ID == studentID);
-            }
+      //LopDepartment
+    public class Department : IListStudent
+{
+    public int DepartmentID { get; private set; }
+    public string DepartmentName { get; private set; }
+    private List<Student> ListStudents { get; set; }
+    
+    public Department(int departmentID, string departmentName)
+    {
+        DepartmentID = departmentID;
+        DepartmentName = departmentName;
+        ListStudents = new List<Student>();
+    }
 
-          
-            public List<Student> GetAllStudents()
+    public void AddStudent(Student student)
+    {
+        ListStudents.Add(student);
+    }
+
+    public void RemoveStudent(int studentID)
+    {
+        Student studentToRemove = FindStudent(studentID);
+        if (studentToRemove != null)
+        {
+            ListStudents.Remove(studentToRemove);
+            Console.WriteLine($"Đã xóa sinh viên với ID: {studentID}");
+        }
+        else
+        {
+            Console.WriteLine($"Không tìm thấy sinh viên với ID: {studentID}");
+        }
+    }
+
+    public void UpdateStudent(Student updatedStudent)
+    {
+        foreach (Student student in ListStudents)
+        {
+            if (student.ID == updatedStudent.ID)
             {
-                return new List<Student>(ListStudents);
+                student.Name = updatedStudent.Name;
+                student.DepartmentID = updatedStudent.DepartmentID;
+                student.DepartmentName = updatedStudent.DepartmentName;
+                Console.WriteLine($"Đã cập nhật sinh viên với ID: {student.ID}");
+                return;
             }
         }
+        Console.WriteLine($"Không tìm thấy sinh viên để cập nhật với ID: {updatedStudent.ID}");
+    }
+
+    public Student FindStudent(int studentID)
+    {
+        foreach (Student student in ListStudents)
+        {
+            if (student.ID == studentID)
+            {
+                return student;
+            }
+        }
+        return null; 
+    }
+
+    public List<Student> GetAllStudents()
+    {
+        return new List<Student>(ListStudents);
+    }
+}
+
     }
 
