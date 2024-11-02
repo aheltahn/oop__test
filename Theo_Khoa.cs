@@ -1,7 +1,6 @@
 ﻿namespace TSXtheoKhoa
 {
-    internal class Program
-    {
+    
         // định danh các đối tượng có ID và Name
         public interface INDENTITY
         {
@@ -101,4 +100,4 @@
             }
         }
     }
-}
+
